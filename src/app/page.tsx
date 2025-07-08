@@ -1,10 +1,10 @@
 import HeroBanner from "@/components/Banner";
 import Navbar from "@/components/Navbar";
-import Services from "@/components/Services";
+import { Services } from "@/components";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-neutral-50 font-sans">
+    <div className="min-h-screen bg-white font-sans">
       <Navbar />
       <HeroBanner />
       <Services />
