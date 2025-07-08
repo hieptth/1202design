@@ -1,11 +1,13 @@
-import HeroBanner from '@/components/Banner';
-import Navbar from '@/components/Navbar';
+import HeroBanner from "@/components/Banner";
+import Navbar from "@/components/Navbar";
+import Services from "@/components/Services";
 
 export default function Home() {
   return (
-    <div className='min-h-screen bg-black font-sans'>
+    <div className="min-h-screen bg-neutral-50 font-sans">
       <Navbar />
       <HeroBanner />
+      <Services />
     </div>
   );
 }
