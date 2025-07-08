@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 function HeroBanner() {
   return (
-    <section className='relative flex flex-col lg:flex-row items-center justify-between px-4 sm:px-8 py-12 sm:py-24 min-h-[800px] bg-black overflow-hidden'>
+    <section className='relative flex flex-col lg:flex-row items-center lg:justify-between px-4 sm:px-8 py-12 sm:py-24 min-h-[700px] bg-black'>
       {/* Background Particles Image */}
       <div className='absolute inset-0 z-0 w-full h-full pointer-events-none'>
         <Image
@@ -33,142 +33,32 @@ function HeroBanner() {
         </button>
       </div>
       {/* Right: Info Card with 3 rectangles */}
-      <div className='z-10 w-full lg:w-1/2 flex justify-center lg:justify-end items-center mt-8 lg:mt-0 relative'>
-        {/* Rectangle 1 */}
-        <div
-          className='lg:block absolute bg-white rounded-[24px] shadow-lg'
-          style={{
-            width: 140,
-            height: 180,
-            bottom: 80,
-            right: 240,
-            opacity: 1,
-          }}
-        ></div>
-        {/* Rectangle 2 */}
-        <div
-          className='lg:block absolute bg-white rounded-[24px] shadow-lg'
-          style={{
-            width: 160,
-            height: 295,
-            top: 20,
-            right: 100,
-            opacity: 1,
-          }}
-        ></div>
-        {/* Rectangle 3 (main card) */}
-        <div
-          className='bg-white rounded-[24px] p-6 sm:p-8 shadow-lg relative'
-          style={{
-            width: 426.73,
-            height: 140,
-            top: 270,
-            right: 239,
-            opacity: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-          }}
-        >
-          <div className='mt-4 text-center lg:text-left'>
-            <div className='font-bold text-black mb-1 text-2xl'>Contact us</div>
-            <a
-              href='mailto:hello@1202design.com'
-              className='text-black break-all'
-            >
-              hello@1202design.com
-            </a>
-          </div>
-        </div>
-        <div
-          className='lg:block absolute bg-white'
-          style={{
-            width: 50,
-            height: 50,
-            top: 55,
-            right: 260,
-            opacity: 1,
-          }}
-        ></div>
-        <div
-          className='lg:block absolute bg-black rounded-tr-2xl'
-          style={{
-            width: 50,
-            height: 50,
-            top: 60,
-            right: 260,
-            opacity: 1,
-          }}
-        ></div>
-        <div
-          className='lg:block absolute bg-white'
-          style={{
-            width: 50,
-            height: 50,
-            top: -30,
-            right: 190,
-            opacity: 1,
-          }}
-        ></div>
-        <div
-          className='lg:block absolute bg-black rounded-bl-2xl'
-          style={{
-            width: 50,
-            height: 50,
-            top: -30,
-            right: 190,
-            opacity: 1,
-          }}
-        ></div>
-        <div
-          className='lg:block absolute bg-white'
-          style={{
-            width: 50,
-            height: 50,
-            bottom: -225,
-            right: 189,
-            opacity: 1,
-          }}
-        ></div>
-        <div
-          className='lg:block absolute bg-black rounded-tl-2xl'
-          style={{
-            width: 50,
-            height: 50,
-            bottom: -225,
-            right: 189,
-            opacity: 1,
-          }}
-        ></div>
-        <div
-          className='lg:block absolute bg-white'
-          style={{
-            width: 50,
-            height: 50,
-            bottom: -130,
-            right: 260,
-            opacity: 1,
-          }}
-        ></div>
-        <div
-          className='lg:block absolute bg-black rounded-br-2xl'
-          style={{
-            width: 50,
-            height: 50,
-            bottom: -130,
-            right: 260,
-            opacity: 1,
-          }}
-        ></div>
-        <div className='absolute top-40 right-75 px-4 sm:px-8'>
-          <p className='text-lg mb-4 text-center lg:text-right'>
-            We are 1202 (twelve-oh-two)
-            <br />
-            and we make professional websites
-            <br />
-            for your business quickly and affordably.
+      <div className='flex items-center gap-8 z-10 relative'>
+        <div className='text-white absolute bottom-[130px] lg:bottom-[200px] right-[130px] lg:right-[200px]'>
+          <p className='lg:w-[450px] text-base lg:text-2xl text-right'>
+            We are 1202 (twelve-oh-two) and we make professional websites for
+            your business quickly and affordably.
           </p>
         </div>
+        <div className='absolute bottom-[24px] lg:bottom-[50px] left-10'>
+          <div className='font-bold text-black mb-1 text-2xl'>Contact us</div>
+          <a
+            href='mailto:hello@1202design.com'
+            className='text-black break-all'
+          >
+            hello@1202design.com
+          </a>
+        </div>
+        {/* Image */}
+        <Image
+          src='/assets/union.png'
+          alt='Union image'
+          width={800}
+          height={800}
+          className='w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] mt-8 lg:mt-0'
+        />
+
+        {/* Text Content */}
       </div>
     </section>
   );
