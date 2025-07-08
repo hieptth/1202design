@@ -8,17 +8,22 @@ export const ACCORDION_CONSTANTS = {
     EASING: "ease-in-out",
   },
   STYLES: {
-    BUTTON_PADDING: "py-8",
-    CONTENT_PADDING: "pb-8 pr-12",
-    BORDER: "border-b border-gray-300",
+    BUTTON_PADDING: {
+      TOP: "pt-8",
+      BOTTOM_CLOSED: "pb-8",
+      BOTTOM_OPEN: "pb-4",
+    },
+    CONTENT_PADDING: "pb-8 pr-8",
+    BORDER: "border-b border-[#D6D6D6]",
     ICON_SIZE: "w-8 h-8",
   },
 } as const;
 
 export const ACCORDION_VARIANTS = {
   default: {
-    title: "text-3xl md:text-4xl font-light text-gray-900 tracking-tight pr-6",
-    content: "text-gray-600 text-lg leading-relaxed max-w-lg",
+    title:
+      "text-xl md:text-2xl/8 font-medium text-[#0C0C0C] tracking-tight pr-6",
+    content: "text-gray-600 text-lg leading-relaxed",
     icon: "text-4xl font-extralight text-gray-700 leading-none",
   },
   minimal: {
