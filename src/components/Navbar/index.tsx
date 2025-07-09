@@ -2,17 +2,10 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
+import { NAV_ITEMS } from '@/app/shared/constants';
 import NavbarDrawer from './components/Drawer';
 import Logo from './components/Logo';
 import NavbarItem from './components/NavbarItem';
-import { NavItem } from './types';
-
-export const NAV_ITEMS: NavItem[] = [
-  { label: 'Home', href: '#' },
-  { label: 'Services', href: '#services', subItems: [] },
-  { label: 'Work', href: '#work' },
-  { label: 'Blogs', href: '#blogs' },
-];
 
 function Navbar() {
   const [active, setActive] = useState('Home');

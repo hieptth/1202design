@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { NAV_ITEMS } from '../..';
+import { NAV_ITEMS } from '@/app/shared/constants';
 import { NavbarDrawerProps } from './types';
 
 function NavbarDrawer({ active, onActive, onDrawerOpen }: NavbarDrawerProps) {
