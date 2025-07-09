@@ -1,53 +1,40 @@
+'use client';
 import Image from 'next/image';
+import { useState } from 'react';
+
+import NavbarDrawer from './components/Drawer';
+import Logo from './components/Logo';
+import NavbarItem from './components/NavbarItem';
+import { NavItem } from './types';
+
+export const NAV_ITEMS: NavItem[] = [
+  { label: 'Home', href: '#' },
+  { label: 'Services', href: '#services', subItems: [] },
+  { label: 'Work', href: '#work' },
+  { label: 'Blogs', href: '#blogs' },
+];
 
 function Navbar() {
+  const [active, setActive] = useState('Home');
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
   return (
     <nav className='flex items-center justify-between px-4 sm:px-8 py-4 border-b border-gray-200 bg-white'>
-      <Image
-        src='/assets/logo.png'
-        alt='1202 Design Studio Logo'
-        width={140}
-        height={32}
-        className='h-8 w-auto sm:h-10 sm:w-[200px]'
-      />
+      <Logo />
       {/* Desktop Nav */}
       <ul className='hidden md:flex items-center gap-8 text-gray-700 font-medium'>
-        <li>
-          <a
-            className='hover:text-black transition px-1 pb-1 border-b-2 border-black'
-            href='#'
-          >
-            Home
-          </a>
-        </li>
-        <li>
-          <a
-            className='hover:text-black transition'
-            href='#services'
-          >
-            Services <span className='inline-block align-middle'>▼</span>
-          </a>
-        </li>
-        <li>
-          <a
-            className='hover:text-black transition'
-            href='#work'
-          >
-            Work
-          </a>
-        </li>
-        <li>
-          <a
-            className='hover:text-black transition'
-            href='#blogs'
-          >
-            Blogs
-          </a>
-        </li>
+        {NAV_ITEMS.map((item) => (
+          <NavbarItem
+            key={item.label}
+            item={item}
+            active={active}
+            onActive={(active) => setActive(active)}
+          />
+        ))}
       </ul>
       <a
         href='#contact'
-        className='hidden md:flex items-center gap-2 bg-black text-white px-5 py-2 rounded-md font-medium hover:bg-gray-900 transition'
+        className='hidden md:flex items-center gap-2 bg-black text-white px-5 py-2 rounded-md font-medium hover:bg-gray-800 transition'
       >
         <Image
           src='/assets/envelope.svg'
@@ -62,6 +49,7 @@ function Navbar() {
       <button
         className='md:hidden flex items-center justify-center p-2 ml-2 rounded hover:bg-gray-100'
         aria-label='Open menu'
+        onClick={() => setDrawerOpen(true)}
       >
         <svg
           width='32'
@@ -74,6 +62,16 @@ function Navbar() {
           <path d='M4 6h16M4 12h16M4 18h16' />
         </svg>
       </button>
+
+      {/* Mobile Drawer */}
+      {drawerOpen && (
+        <NavbarDrawer
+          active={active}
+          drawerOpen={drawerOpen}
+          onActive={(active) => setActive(active)}
+          onDrawerOpen={(open) => setDrawerOpen(open)}
+        />
+      )}
     </nav>
   );
 }
