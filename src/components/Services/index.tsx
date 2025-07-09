@@ -38,7 +38,7 @@ const OFFERED_SERVICES = [
 
 const Services = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 justify-center gap-5 px-4 py-8 md:px-35 md:py-24">
+    <div className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-5 px-4 py-8 lg:px-35 lg:py-24">
       <div className="flex flex-col gap-8 rounded-4xl bg-[#F8F8F8] p-9">
         <div className="flex flex-col gap-3">
           <p className="text-5xl/15 uppercase text-[#0C0C0C] tracking-tight">
