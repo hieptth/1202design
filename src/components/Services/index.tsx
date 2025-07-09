@@ -1,7 +1,6 @@
 "use client";
 
 import { Accordion } from "@/app/ui";
-import Image from "next/image";
 
 const OFFERED_SERVICES = [
   {
@@ -38,7 +37,10 @@ const OFFERED_SERVICES = [
 
 const Services = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-5 px-4 py-8 lg:px-35 lg:py-24">
+    <div
+      id="services"
+      className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-5 px-4 py-12 lg:px-35 lg:py-24"
+    >
       <div className="flex flex-col gap-8 rounded-4xl bg-[#F8F8F8] p-9">
         <div className="flex flex-col gap-3">
           <p className="text-5xl/15 uppercase text-[#0C0C0C] tracking-tight">
@@ -58,13 +60,16 @@ const Services = () => {
         />
       </div>
 
-      <Image
-        src="/assets/keyboard.png"
-        alt="Services Image"
-        width={500}
-        height={500}
-        className="w-full object-cover rounded-4xl"
-      />
+      <div className="w-full h-full min-h-[500px] rounded-4xl overflow-hidden">
+        <iframe
+          src="https://my.spline.design/keyboard-6538b65dd65ffbb21a5e4576bee802b3/"
+          frameBorder="0"
+          width="100%"
+          height="100%"
+          className="w-full h-full min-h-[500px] rounded-4xl"
+          title="3D Keyboard Animation"
+        />
+      </div>
     </div>
   );
 };
