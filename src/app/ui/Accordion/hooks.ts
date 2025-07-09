@@ -1,8 +1,7 @@
+"use client";
+
 import { useState, useEffect, useRef, useCallback } from "react";
 
-/**
- * Custom hook for managing accordion item height animation
- */
 export const useAccordionHeight = (isOpen: boolean) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<number>(0);

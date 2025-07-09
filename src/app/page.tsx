@@ -1,6 +1,6 @@
+import { Products, Services } from "@/components";
 import HeroBanner from "@/components/Banner";
 import Navbar from "@/components/Navbar";
-import { Services } from "@/components";
 
 export default function Home() {
   return (
@@ -8,6 +8,7 @@ export default function Home() {
       <Navbar />
       <HeroBanner />
       <Services />
+      <Products />
     </div>
   );
 }
