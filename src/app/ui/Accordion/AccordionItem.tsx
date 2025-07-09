@@ -34,7 +34,7 @@ export const AccordionItem = memo<AccordionItemProps>(
             .toLowerCase()}`}
           type="button"
         >
-          <h3 className={variantStyles.title}>{title}</h3>
+          <p className={variantStyles.title}>{title}</p>
 
           <div className="flex-shrink-0" aria-hidden="true">
             <div
