@@ -5,11 +5,15 @@ import { AutoPlay } from "@egjs/flicking-plugins";
 import "@egjs/flicking-plugins/dist/flicking-plugins.css";
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
+import { useState } from "react";
 import { CARD_ITEMS } from "./constants";
 
 const Products = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   const plugins = [
-    new AutoPlay({ duration: 3000, direction: "NEXT", stopOnHover: true }),
+    new AutoPlay({ duration: 300, direction: "NEXT", stopOnHover: true }),
   ];
 
   return (
@@ -37,14 +41,25 @@ const Products = () => {
         hideBeforeInit={true}
         className="w-full"
         style={{ overflow: "unset", height: "395px !important" }}
+        onChanged={(e) => setActiveIndex(e.index)}
       >
         {CARD_ITEMS.map((item, index) => (
-          <div key={index} className="flex items-end px-5 h-auto">
+          <div
+            key={index}
+            className="flex items-end px-5"
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
             <HoverCard
               props={{
+                index,
                 img: item.img,
                 title: item.title,
                 description: item.description,
+                isActive:
+                  hoveredIndex === null
+                    ? index === activeIndex
+                    : index === hoveredIndex,
               }}
             />
           </div>
