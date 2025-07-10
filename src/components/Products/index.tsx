@@ -13,7 +13,7 @@ const Products = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const plugins = [
-    new AutoPlay({ duration: 300, direction: "NEXT", stopOnHover: true }),
+    new AutoPlay({ duration: 3000, direction: "NEXT", stopOnHover: true }),
   ];
 
   return (
@@ -30,7 +30,7 @@ const Products = () => {
       </div>
 
       <Flicking
-        align="prev"
+        align="center"
         circular={true}
         circularFallback="bound"
         deceleration={0.005}
@@ -41,7 +41,7 @@ const Products = () => {
         hideBeforeInit={true}
         className="w-full"
         style={{ overflow: "unset", height: "395px !important" }}
-        onChanged={(e) => setActiveIndex(e.index)}
+        onWillChange={(e) => setActiveIndex(e.index)}
       >
         {CARD_ITEMS.map((item, index) => (
           <div
