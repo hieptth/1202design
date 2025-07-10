@@ -27,9 +27,9 @@ const Services = () => {
   return (
     <div
       id="services"
-      className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-5 px-4 lg:px-35"
+      className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-5 px-4 lg:px-0 lg:mx-auto"
     >
-      <div className="flex flex-col gap-8 rounded-4xl bg-neutral-50 p-9">
+      <div className="flex flex-col gap-8 rounded-4xl bg-neutral-50 p-9 max-w-[561px]">
         <div className="flex flex-col gap-3">
           <p className="text-display-sm lg:text-display-lg uppercase text-gray-950 tracking-tight">
             Our Services
@@ -48,7 +48,7 @@ const Services = () => {
         />
       </div>
 
-      <div className="w-full h-full min-h-[500px] rounded-4xl overflow-hidden">
+      <div className="w-full h-full min-h-[500px] rounded-4xl overflow-hidden max-w-[561px]">
         <iframe
           src="https://my.spline.design/keyboard-6538b65dd65ffbb21a5e4576bee802b3/"
           frameBorder="0"
