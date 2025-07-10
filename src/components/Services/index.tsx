@@ -27,7 +27,7 @@ const Services = () => {
   return (
     <div
       id="services"
-      className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-5 px-4 py-12 lg:px-35 lg:py-24"
+      className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-5 px-4 lg:px-35"
     >
       <div className="flex flex-col gap-8 rounded-4xl bg-neutral-50 p-9">
         <div className="flex flex-col gap-3">
