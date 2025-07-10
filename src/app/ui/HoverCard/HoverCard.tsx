@@ -11,37 +11,40 @@ export const HoverCard = ({ props }: { props: HoverCardProps }) => {
 
   return (
     <div
-      className={`rounded-4xl p-3 bg-neutral-50 size-[213px] bg-cover transition-all duration-300 ease-in-out hover:scale-105 group cursor-pointer overflow-hidden hover:shadow-lg hover:h-auto hover:w-auto relative ${className}`}
-      style={{
-        backgroundImage: `url(${img})`,
-        ...style,
-      }}
+      className={`rounded-4xl w-[219px] h-auto bg-neutral-50 group cursor-pointer relative hover:w-[329px] hover:h-[331px] hover:bg-white transition-all duration-500 ease-out transform-gpu ${
+        className || ""
+      }`}
+      style={style}
     >
-      {/* Default state: just the background image */}
+      {/* Normal state: compact card with background image */}
+      <div
+        className="size-[213px] rounded-4xl bg-cover bg-center transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-90"
+        style={{ backgroundImage: `url(${img})` }}
+      />
 
-      {/* White background overlay that appears on hover */}
-      <div className="opacity-0 group-hover:opacity-100 absolute inset-0 bg-white transition-opacity duration-300 ease-in-out"></div>
+      {/* Hover state: expanded card with content */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out group-hover:-translate-y-12 z-10 pointer-events-none group-hover:pointer-events-auto">
+        {/* White background card */}
+        <div className="bg-white rounded-4xl overflow-hidden w-[329px] h-auto min-h-[329px] flex flex-col gap-2.5 p-1.5 pb-6 shadow-card">
+          {/* Image section */}
+          <div
+            className="w-full h-[213px] rounded-[26px] bg-cover bg-center"
+            style={{ backgroundImage: `url(${img})` }}
+          />
 
-      {/* Expanded content that appears on hover */}
-      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out group-hover:mt-4 relative z-10">
-        {/* Image section for hover state */}
-        <div
-          className="hidden group-hover:block w-full h-48 bg-cover bg-center rounded-xl mb-4 -mt-3 -mx-3"
-          style={{ backgroundImage: `url(${img})` }}
-        />
-
-        {/* Content section */}
-        <div className="hidden group-hover:block p-3">
-          {title && (
-            <h3 className="text-xl font-semibold mb-3 text-gray-800 line-clamp-2">
-              {title}
-            </h3>
-          )}
-          {description && (
-            <p className="text-gray-600 text-sm leading-relaxed line-clamp-4">
-              {description}
-            </p>
-          )}
+          {/* Content section */}
+          <div className="flex flex-col gap-0.5 px-5">
+            {title && (
+              <p className="text-xl font-semibold text-gray-950 line-clamp-1">
+                {title}
+              </p>
+            )}
+            {description && (
+              <p className="text-gray-950 text-md line-clamp-2">
+                {description}
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>
