@@ -45,4 +45,9 @@ export const CARD_ITEMS = [
     title: "Gaming Laptop",
     description: "Powerful gaming laptop with high-end graphics card.",
   },
+  {
+    img: "/assets/keyboard.png",
+    title: "Gaming Laptop",
+    description: "Powerful gaming laptop with high-end graphics card.",
+  },
 ];

@@ -36,7 +36,6 @@ const Products = () => {
         deceleration={0.005}
         duration={1000}
         adaptive={true}
-        autoResize={true}
         plugins={plugins}
         hideBeforeInit={true}
         className="w-full"
@@ -46,7 +45,7 @@ const Products = () => {
         {CARD_ITEMS.map((item, index) => (
           <div
             key={index}
-            className="flex items-end px-5"
+            className="flex items-end box-border"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >

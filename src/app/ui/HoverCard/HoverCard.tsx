@@ -16,7 +16,7 @@ export const HoverCard = ({ props }: { props: HoverCardProps }) => {
   return (
     <div
       className={clsx(
-        "rounded-4xl w-[219px] bg-neutral-50 group cursor-pointer relative transition-all duration-500 ease-out transform-gpu",
+        "flex mx-1 lg:mx-5 rounded-4xl w-[213px] bg-neutral-50 group cursor-pointer relative transition-all duration-500 ease-out transform-gpu",
         isActive && "w-[329px] h-[331px] bg-white",
         className
       )}
@@ -35,7 +35,7 @@ export const HoverCard = ({ props }: { props: HoverCardProps }) => {
       <div
         className={clsx(
           "absolute top-0 left-1/2 -translate-x-1/2 transition-all duration-500 ease-out z-10 opacity-0 pointer-events-none",
-          isActive && "-translate-y-12 opacity-100 pointer-events-auto"
+          isActive && "lg:-translate-y-12 opacity-100 pointer-events-auto"
         )}
       >
         {/* White background card */}
