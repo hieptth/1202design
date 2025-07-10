@@ -1,11 +1,13 @@
-import HeroBanner from '@/components/Banner';
-import Navbar from '@/components/Navbar';
+import { Banner, Footer, Navbar, Products, Services } from "@/components";
 
 export default function Home() {
   return (
-    <div className='min-h-screen bg-black font-sans'>
+    <div className="min-h-screen max-w-screen overflow-x-hidden">
       <Navbar />
-      <HeroBanner />
+      <Banner />
+      <Services />
+      <Products />
+      <Footer />
     </div>
   );
 }
