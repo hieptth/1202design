@@ -1,4 +1,14 @@
-import { Banner, Footer, Navbar, Products, Services } from "@/components";
+import {
+  Banner,
+  Contact,
+  Footer,
+  Navbar,
+  Products,
+  Services,
+  SubBanner,
+  Testimonials,
+  Work,
+} from "@/components";
 
 export default function Home() {
   return (
@@ -7,6 +17,10 @@ export default function Home() {
       <Banner />
       <Services />
       <Products />
+      <SubBanner />
+      <Testimonials />
+      <Work />
+      <Contact />
       <Footer />
     </div>
   );
