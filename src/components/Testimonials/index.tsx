@@ -5,6 +5,7 @@ import { TESTIMONIALS } from "./constants";
 import Image from "next/image";
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
+import { useRef, useEffect, useState } from "react";
 
 export type Testimonial = {
   image?: string;
@@ -15,10 +16,44 @@ export type Testimonial = {
 };
 
 const Testimonials = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="testimonials" className="px-4 md:px-8 relative">
+    <section
+      id="testimonials"
+      className="px-4 md:px-8 relative"
+      ref={sectionRef}
+    >
       {/* Section Title */}
-      <div className="px-4 absolute top-1/2 left-0 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 z-2 md:-z-1">
+      <div
+        className="px-4 absolute top-1/2 left-0 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 z-2 md:-z-1 animate__animated"
+        style={
+          visible
+            ? {
+                animationName: "rotateIn",
+                animationDuration: "0.8s",
+                animationTimingFunction: "cubic-bezier(.4,0,.2,1)",
+              }
+            : { opacity: 0 }
+        }
+      >
         <span className="italic font-extralight text-[96px] md:text-[128px] tracking-[-1.92px] md:tracking-[-2.56px] leading-[0.9] md:leading-none">
           Our
         </span>
@@ -34,7 +69,13 @@ const Testimonials = () => {
           <TestimonialCard
             key={index}
             {...testimonial}
-            className="col-span-4 lg:col-span-3 xl:col-span-1"
+            className={`col-span-4 lg:col-span-3 xl:col-span-1 animate__animated ${
+              visible ? "animate__flipInY" : "opacity-0"
+            }`}
+            style={{
+              animationDuration: "0.8s",
+              animationTimingFunction: "cubic-bezier(.4,0,.2,1)",
+            }}
           />
         ))}
       </div>
@@ -42,7 +83,16 @@ const Testimonials = () => {
       {/* Cards for mobile */}
       <div className="md:hidden flex flex-col items-center  gap-y-35 z-0">
         <div className="flex justify-end w-full">
-          <TestimonialCard {...TESTIMONIALS[0]} />
+          <TestimonialCard
+            {...TESTIMONIALS[0]}
+            className={`animate__animated ${
+              visible ? "animate__flipInY" : "opacity-0"
+            }`}
+            style={{
+              animationDuration: "0.8s",
+              animationTimingFunction: "cubic-bezier(.4,0,.2,1)",
+            }}
+          />
         </div>
 
         <Flicking
@@ -56,7 +106,17 @@ const Testimonials = () => {
         >
           {TESTIMONIALS.slice(1).map((testimonial, index) => (
             <div key={index} className="px-2">
-              <TestimonialCard key={index} {...testimonial} />
+              <TestimonialCard
+                key={index}
+                {...testimonial}
+                className={`animate__animated ${
+                  visible ? "animate__flipInY" : "opacity-0"
+                }`}
+                style={{
+                  animationDuration: "0.8s",
+                  animationTimingFunction: "cubic-bezier(.4,0,.2,1)",
+                }}
+              />
             </div>
           ))}
         </Flicking>
@@ -72,7 +132,8 @@ const TestimonialCard = ({
   rating,
   display,
   className,
-}: Testimonial & { className?: string }) => {
+  style,
+}: Testimonial & { className?: string; style?: React.CSSProperties }) => {
   return (
     <div
       className={clsx(
@@ -83,6 +144,7 @@ const TestimonialCard = ({
         },
         className
       )}
+      style={style}
     >
       <div className="flex flex-col items-center gap-3">
         <div className="size-16 aspect-square bg-[#D9D9D9] rounded-full overflow-clip">
