@@ -6,6 +6,7 @@ import {
   Services,
   SubBanner,
   Contact,
+  Work,
 } from '@/components';
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <Services />
       <Products />
       <SubBanner />
+      <Work />
       <Contact />
       <Footer />
     </div>
