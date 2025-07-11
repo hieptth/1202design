@@ -49,7 +49,7 @@ const SubBanner = () => {
           >
             <p className="text-md font-medium">Our work</p>
             <Image
-              src="/assets/arrow-right.svg"
+              src="/assets/arrow-right-white.svg"
               alt="arrow right icon"
               width={24}
               height={24}
