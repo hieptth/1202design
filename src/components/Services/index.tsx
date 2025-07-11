@@ -27,14 +27,14 @@ const Services = () => {
   return (
     <div
       id="services"
-      className="grid grid-cols-1 lg:grid-cols-2 justify-center gap-5 px-4 lg:px-0 lg:mx-auto"
+      className="grid grid-cols-1 md:grid-cols-2 justify-center gap-5 px-4 lg:px-0 lg:mx-auto"
     >
-      <div className="flex flex-col gap-8 rounded-4xl bg-neutral-50 p-9 max-w-[561px]">
+      <div className="flex flex-col gap-8 rounded-4xl bg-neutral-50 p-9 w-full md:max-w-[561px]">
         <div className="flex flex-col gap-3">
-          <p className="text-display-sm lg:text-display-lg uppercase text-gray-950 tracking-tight">
+          <p className="text-display-sm md:text-display-lg uppercase text-gray-950 tracking-tight">
             Our Services
           </p>
-          <p className="text-sm lg:text-xl text-gray-500 leading-relaxed">
+          <p className="text-sm md:text-xl text-gray-500 leading-relaxed">
             A website enhances your credibility, elevates visibility, and drive
             results. Our mission is to provide you with quality websites quickly
             and affordably to support your success.
@@ -48,7 +48,7 @@ const Services = () => {
         />
       </div>
 
-      <div className="w-full h-full min-h-[500px] rounded-4xl overflow-hidden max-w-[561px]">
+      <div className="min-h-[500px] rounded-4xl overflow-hidden size-full md:max-w-[561px]">
         <iframe
           src="https://my.spline.design/keyboard-6538b65dd65ffbb21a5e4576bee802b3/"
           frameBorder="0"
