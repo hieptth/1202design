@@ -1,5 +1,5 @@
 'use client';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { toast } from 'sonner';
 
@@ -10,6 +10,25 @@ function Contact() {
   const lastNameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,9 +55,16 @@ function Contact() {
   };
 
   return (
-    <section className='w-full max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8'>
+    <section
+      ref={sectionRef}
+      className='w-full max-w-5xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8'
+    >
       {/* Left: Info and Illustration */}
-      <div className='flex-1 bg-[var(--color-neutral-50)] rounded-2xl p-6 sm:p-10 flex flex-col justify-between min-h-[470px] lg:min-h-[600px] shadow-md relative overflow-hidden'>
+      <div
+        className={`flex-1 bg-[var(--color-neutral-50)] rounded-2xl p-6 sm:p-10 flex flex-col justify-between min-h-[470px] lg:min-h-[600px] shadow-md relative overflow-hidden animate__animated ${
+          visible ? 'animate__fadeInLeft' : 'opacity-0'
+        }`}
+      >
         {/* Gradient background bottom right */}
         <div
           className='pointer-events-none absolute right-0 bottom-0 w-2/3 h-2/3'
@@ -69,7 +95,13 @@ function Contact() {
       {/* Right: Form */}
       <form
         onSubmit={handleSubmit}
-        className='flex-1 bg-[#f7f7f7] rounded-2xl p-6 sm:p-10 flex flex-col gap-4 shadow-md'
+        className={`flex-1 bg-[#f7f7f7] rounded-2xl p-6 sm:p-10 flex flex-col gap-4 shadow-md animate__animated ${
+          visible ? 'animate__fadeInRight' : 'opacity-0'
+        }`}
+        style={{
+          animationDuration: '0.8s',
+          animationTimingFunction: 'cubic-bezier(.4,0,.2,1)',
+        }}
       >
         <div className='flex flex-col gap-2'>
           <label

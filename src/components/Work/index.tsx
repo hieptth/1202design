@@ -1,3 +1,6 @@
+'use client';
+import { useRef, useEffect, useState } from 'react';
+
 const STEPS = [
   {
     number: '01',
@@ -17,9 +20,39 @@ const STEPS = [
 ];
 
 function Work() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className='w-full flex flex-col items-center px-4'>
-      <h2 className='text-display-sm sm:text-display-lg font-normal text-center mb-8 sm:mb-12'>
+    <section
+      className='w-full flex flex-col items-center px-4'
+      ref={sectionRef}
+    >
+      <h2
+        className={`text-display-sm sm:text-display-lg font-normal text-center mb-8 sm:mb-12 animate__animated ${
+          visible ? 'animate__flipInX' : 'opacity-0'
+        }`}
+        style={{
+          animationDuration: '0.8s',
+          animationTimingFunction: 'cubic-bezier(.4,0,.2,1)',
+        }}
+      >
         HOW WE WORK?
       </h2>
       <div className='w-full max-w-4xl flex flex-col gap-6'>
@@ -27,8 +60,19 @@ function Work() {
           <div
             key={step.number}
             className={`rounded-2xl sm:rounded-3xl flex flex-col md:flex-row items-center gap-6 px-6 sm:px-12 py-8 sm:py-10 transition-colors duration-300
-              ${idx === 1 ? 'bg-black text-white' : 'bg-[#fafafa] text-black'}
-            `}
+              ${
+                idx === 1 ? 'bg-black text-white' : 'bg-[#fafafa] text-black'
+              } animate__animated ${
+              visible
+                ? idx % 2 === 0
+                  ? 'animate__fadeInRight'
+                  : 'animate__fadeInLeft'
+                : 'opacity-0'
+            }`}
+            style={{
+              animationDuration: '0.8s',
+              animationTimingFunction: 'cubic-bezier(.4,0,.2,1)',
+            }}
           >
             <div
               className='flex-shrink-0 text-[150px] sm:text-[250px] leading-none font-light select-none mr-6 sm:mr-12 font-sans relative overflow-hidden max-h-[80px] lg:max-h-[120px]'
