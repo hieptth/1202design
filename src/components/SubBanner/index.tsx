@@ -1,12 +1,44 @@
+"use client";
 import clsx from "clsx";
 import Image from "next/image";
+import { useRef, useEffect, useState } from "react";
 
 const SubBanner = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="work" className="px-3 sm:px-[10%]">
       <div className="rounded-4xl bg-neutral-50 border-box pt-6 px-4 pb-73.5 md:pt-16 md:pl-16 md:pb-23.5 md:pr-0 relative overflow-hidden">
-        <div className="flex flex-col gap-2 sm:gap-3 sm:max-w-7/10 relative z-10">
-          <p className="text-display-sm sm:text-display-lg text-neutral-950 text-balance">
+        <div
+          ref={sectionRef}
+          className="flex flex-col gap-2 sm:gap-3 sm:max-w-7/10 relative z-10"
+        >
+          <p
+            className={`text-display-sm sm:text-display-lg text-neutral-950 text-balance animate__animated ${
+              visible ? "animate__zoomInDown" : "opacity-0"
+            }`}
+            style={{
+              animationDuration: "0.8s",
+              animationTimingFunction: "cubic-bezier(.4,0,.2,1)",
+            }}
+          >
             Bring your business forward.
           </p>
           <p className="text-sm sm:text-xl text-gray-500 text-pretty">
@@ -20,8 +52,10 @@ const SubBanner = () => {
             className={clsx(
               "flex items-center gap-2 group w-fit transition cursor-pointer",
               "bg-neutral-950 text-white hover:bg-gray-900",
-              "rounded-xl px-8 py-3 mt-3 sm:mt-6"
+              "rounded-xl px-8 py-3 mt-3 sm:mt-6 animate__animated",
+              visible ? "animate__heartBeat animate__delay-1s" : ""
             )}
+            style={{ animationDuration: "1.2s" }}
           >
             <p className="text-md font-medium">Our work</p>
             <Image
