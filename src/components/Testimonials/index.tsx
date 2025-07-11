@@ -29,9 +29,13 @@ const Testimonials = () => {
       </div>
 
       {/* Cards for desktop */}
-      <div className="hidden md:flex flex-wrap items-center content-center gap-x-5 gap-y-8">
+      <div className="hidden md:grid grid-cols-12 xl:grid-cols-5 gap-x-5 gap-y-8 max-h-[calc(2*346px+32px)] overflow-hidden">
         {TESTIMONIALS.map((testimonial, index) => (
-          <TestimonialCard key={index} {...testimonial} />
+          <TestimonialCard
+            key={index}
+            {...testimonial}
+            className="col-span-4 lg:col-span-3 xl:col-span-1"
+          />
         ))}
       </div>
 
@@ -67,7 +71,8 @@ const TestimonialCard = ({
   feedback,
   rating,
   display,
-}: Testimonial) => {
+  className,
+}: Testimonial & { className?: string }) => {
   return (
     <div
       className={clsx(
@@ -75,7 +80,8 @@ const TestimonialCard = ({
         "rounded-4xl bg-neutral-50 p-6 pb-8 w-[259px] h-[346px]",
         {
           "md:invisible": !display,
-        }
+        },
+        className
       )}
     >
       <div className="flex flex-col items-center gap-3">
