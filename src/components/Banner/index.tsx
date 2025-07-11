@@ -2,7 +2,7 @@ import Image from "next/image";
 
 function HeroBanner() {
   return (
-    <section className="relative flex flex-col lg:flex-row items-center lg:justify-between px-4 mt-[81px] sm:mt-[77px] sm:px-8 py-12 sm:py-24 min-h-[700px] bg-black">
+    <section className="relative flex flex-col lg:flex-row items-center lg:justify-between px-4 mt-[81px] sm:mt-[77px] sm:px-8 py-12 sm:py-24 min-h-[700px] bg-black animate__animated animate__fadeIn animate__faster">
       {/* Background Spline Animation */}
       <div className='absolute inset-0 z-0 w-full h-full'>
         <iframe
@@ -21,7 +21,7 @@ function HeroBanner() {
         />
       </div>
       {/* Left: Hero Text */}
-      <div className="z-10 w-full lg:w-1/2 flex flex-col items-center lg:items-start justify-center mt-8 lg:mt-0">
+      <div className="z-10 w-full lg:w-1/2 flex flex-col items-center lg:items-start justify-center mt-8 lg:mt-0 animate__animated animate__fadeInUp animate__fast">
         <h1 className="text-white text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 text-center lg:text-left leading-tight">
           Let&apos;s build
           <br />
@@ -39,7 +39,7 @@ function HeroBanner() {
         </button>
       </div>
       {/* Right: Info Card with 3 rectangles */}
-      <div className="flex items-center gap-8 z-10 relative">
+      <div className="flex items-center gap-8 z-10 relative animate__animated animate__fadeInUp animate__fast">
         <div className="text-white absolute bottom-[130px] lg:bottom-[200px] right-[130px] lg:right-[200px]">
           <p className="lg:w-[450px] text-base lg:text-2xl text-right">
             We are 1202 (twelve-oh-two) and we make professional websites for
