@@ -85,6 +85,8 @@ const Services = () => {
           className='w-full h-full min-h-[500px] rounded-4xl'
           title='3D Keyboard Animation'
         />
+
+        <div className="absolute w-40 h-10 bottom-4 right-4 bg-[#0c0c0c] z-1"></div>
       </div>
     </div>
   );

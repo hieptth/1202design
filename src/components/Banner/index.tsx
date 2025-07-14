@@ -19,6 +19,8 @@ function HeroBanner() {
           }}
           allowFullScreen
         />
+
+        <div className="absolute w-40 h-10 bottom-4 right-4 bg-[#121212] z-1"></div>
       </div>
       {/* Left: Hero Text */}
       <div className="z-10 w-full lg:w-1/2 flex flex-col items-center lg:items-start justify-center mt-8 lg:mt-0 animate__animated animate__fadeInUp animate__fast">
