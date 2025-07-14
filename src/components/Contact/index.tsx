@@ -2,6 +2,7 @@
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
+import clsx from "clsx";
 
 const FORM_API_URL = "https://formspree.io/f/xovwgedk";
 
@@ -74,8 +75,10 @@ function Contact() {
           }}
         />
         <div className="relative z-10">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">CONTACT US</h2>
-          <p className="text-gray-700 mb-8 text-base sm:text-lg">
+          <h2 className="text-display-sm sm:text-display-lg mb-4">
+            CONTACT US
+          </h2>
+          <p className="text-gray-500 mb-8 text-sm sm:text-xl">
             Have a particular project in mind?{" "}
             <br className="hidden sm:block" />
             Contact us to help you transform your ideas into a unique end-to-end
@@ -92,6 +95,7 @@ function Contact() {
           />
         </div>
       </div>
+
       {/* Right: Form */}
       <form
         onSubmit={handleSubmit}
