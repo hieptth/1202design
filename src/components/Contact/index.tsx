@@ -1,8 +1,7 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
-import clsx from "clsx";
 
 const FORM_API_URL = "https://formspree.io/f/xovwgedk";
 
