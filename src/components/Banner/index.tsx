@@ -2,20 +2,20 @@ import Image from "next/image";
 
 function HeroBanner() {
   return (
-    <section className="relative flex flex-col lg:flex-row items-center lg:justify-between px-4 mt-[81px] sm:mt-[77px] sm:px-8 py-12 sm:py-24 min-h-[700px] bg-black animate__animated animate__fadeIn animate__faster">
+    <section className="relative flex flex-col lg:flex-row items-center lg:justify-between px-4 mt-[72px] md:mt-[77px] sm:px-8 py-12 sm:py-24 min-h-[700px] bg-black animate__animated animate__fadeIn animate__faster">
       {/* Background Spline Animation */}
-      <div className='absolute inset-0 z-0 w-full h-full'>
+      <div className="absolute inset-0 z-0 w-full h-full">
         <iframe
-          src='https://my.spline.design/particles-7cf1560892450412e3ac1a75f902a4c7/'
-          title='Spline Particles Animation'
-          className='w-full h-full border-0'
+          src="https://my.spline.design/particles-7cf1560892450412e3ac1a75f902a4c7/"
+          title="Spline Particles Animation"
+          className="w-full h-full border-0"
           style={{
-            position: 'absolute',
+            position: "absolute",
             inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
           }}
           allowFullScreen
         />

@@ -17,7 +17,7 @@ function Navbar() {
       <Logo />
 
       {/* Desktop Nav */}
-      <ul className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
+      <ul className="hidden lg:flex items-center justify-center gap-8">
         {NAV_ITEMS.map((item) => (
           <NavbarItem
             key={item.label}
@@ -31,7 +31,7 @@ function Navbar() {
       {/* Contact button */}
       <a
         href="#contact"
-        className="hidden md:flex items-center gap-2 bg-neutral-950 text-white px-8 py-3 rounded-xl hover:opacity-80 transition"
+        className="hidden lg:flex items-center gap-2 bg-neutral-950 text-white px-8 py-3 rounded-xl hover:opacity-80 transition"
       >
         <Image
           src="/assets/envelope.svg"
@@ -45,7 +45,7 @@ function Navbar() {
 
       {/* Mobile Hamburger */}
       <button
-        className="md:hidden flex items-center justify-center p-3 rounded-xl cursor-pointer bg-gray-950 hover:opacity-80 transition duration-500"
+        className="lg:hidden flex items-center justify-center p-3 rounded-xl cursor-pointer bg-gray-950 hover:opacity-80 transition duration-500"
         aria-label="Open menu"
         onClick={() => setDrawerOpen(true)}
       >

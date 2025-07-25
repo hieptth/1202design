@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import { useState } from 'react';
-import { NavbarItemProps } from './types';
+import Image from "next/image";
+import { NavbarItemProps } from "./types";
+import { clsx } from "clsx";
 
 function NavbarItem(props: NavbarItemProps) {
   const {
@@ -8,43 +8,48 @@ function NavbarItem(props: NavbarItemProps) {
     active,
     onActive,
   } = props;
-  const [hovered, setHovered] = useState(false);
 
   return (
-    <li
-      key={label}
-      className='relative'
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
+    <li key={label} className="relative group">
       <a
-        className={`hover:text-black transition px-1 pb-1 border-b-2 ${
-          active === label ? 'border-black' : 'border-transparent'
-        } flex items-center`}
+        className={clsx("transition p-3 flex items-center gap-2", {
+          "border-gray-400 pb-[5px] border-b-5": active === label,
+          "border-transparent": active !== label,
+        })}
         href={href}
         onClick={() => onActive(label)}
       >
-        {label}
+        <p
+          className={clsx(
+            "text-display-xs font-medium",
+            "hover:text-neutral-950",
+            {
+              "text-neutral-950": active === label,
+              "text-gray-500": active !== label,
+            }
+          )}
+        >
+          {label}
+        </p>
         {subItems && (
           <Image
-            src='/assets/caret-down.svg'
-            alt='caret down icon'
-            width={12}
-            height={12}
-            className={`inline-block align-middle ml-2 transition-transform duration-200 ${
-              hovered ? 'rotate-180' : ''
-            }`}
+            src="/assets/caret-down.svg"
+            alt="caret down icon"
+            width={16}
+            height={16}
+            className="inline-block align-middle transition-transform duration-200 group-hover:rotate-180"
           />
         )}
       </a>
+
       {/* Popup for subItems */}
-      {subItems && hovered && (
-        <ul className='absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-full flex flex-col min-w-[180px] bg-white shadow-lg rounded-xl py-2 z-50 border border-gray-100 animate__animated animate__fadeInUp animate__faster'>
+      {subItems && (
+        <ul className="absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-full flex-col min-w-[180px] bg-white shadow-lg rounded-lg py-2 z-50 border border-gray-100 animate__animated animate__fadeInUp animate__faster opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto hidden group-hover:flex">
           {subItems.map((sub) => (
             <li key={sub.label}>
               <a
-                href={sub.href || '#'}
-                className='block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition rounded-md text-sm whitespace-nowrap'
+                href={sub.href || "#"}
+                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-black transition text-sm whitespace-nowrap"
               >
                 {sub.label}
               </a>
