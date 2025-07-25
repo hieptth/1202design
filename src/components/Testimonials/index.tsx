@@ -1,11 +1,12 @@
 "use client";
 
-import clsx from "clsx";
-import { TESTIMONIALS } from "./constants";
-import Image from "next/image";
+import { AutoPlay } from "@egjs/flicking-plugins";
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
-import { useRef, useEffect, useState } from "react";
+import clsx from "clsx";
+import Image from "next/image";
+import { useRef } from "react";
+import { TESTIMONIALS } from "./constants";
 
 export type Testimonial = {
   image?: string;
@@ -17,28 +18,14 @@ export type Testimonial = {
 
 const Testimonials = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    return () => observer.disconnect();
-  }, []);
+  const plugins = [
+    new AutoPlay({ duration: 3000, direction: "NEXT", stopOnHover: true }),
+  ];
 
   return (
     <section
       id="testimonials"
-      className="px-4 md:px-8 mx-auto max-w-344 box-content relative"
+      className="px-4 md:px-8 xl:mx-auto xl:max-w-360 relative"
       ref={sectionRef}
     >
       {/* Section Title */}
@@ -64,7 +51,7 @@ const Testimonials = () => {
       </div>
 
       {/* Cards for mobile */}
-      <div className="md:hidden flex flex-col items-center  gap-y-35 z-0">
+      <div className="md:hidden flex flex-col gap-y-35 z-0">
         <div className="flex justify-end w-full">
           <TestimonialCard {...TESTIMONIALS[0]} />
         </div>
@@ -75,8 +62,10 @@ const Testimonials = () => {
           circularFallback="bound"
           deceleration={0.005}
           duration={1000}
+          plugins={plugins}
           hideBeforeInit={true}
           className="w-full"
+          style={{ overflow: "unset" }}
         >
           {TESTIMONIALS.slice(1).map((testimonial, index) => (
             <div key={index} className="px-2">
