@@ -1,13 +1,13 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 function Logo() {
   return (
     <Image
-      src='/assets/logo.png'
-      alt='1202 Design Studio Logo'
-      width={140}
-      height={32}
-      className='h-8 w-auto sm:h-10 sm:w-[200px]'
+      src={"/assets/logo.png"}
+      alt="1202 Design Studio Logo"
+      width={180}
+      height={36}
+      className="h-7 w-35 md:h-9 md:w-45 object-cover"
     />
   );
 }
