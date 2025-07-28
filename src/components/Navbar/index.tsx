@@ -13,10 +13,11 @@ function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
-    <nav className="flex items-center justify-between px-4 sm:px-8 py-4 border-b border-gray-200 bg-white fixed w-full top-0 z-50">
+    <nav className="flex items-center self-stretch justify-between px-4 py-3 md:p-5 border-b border-gray-400 bg-white fixed w-full top-0 z-50">
       <Logo />
+
       {/* Desktop Nav */}
-      <ul className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
+      <ul className="hidden lg:flex items-center justify-center gap-8">
         {NAV_ITEMS.map((item) => (
           <NavbarItem
             key={item.label}
@@ -26,30 +27,33 @@ function Navbar() {
           />
         ))}
       </ul>
+
+      {/* Contact button */}
       <a
         href="#contact"
-        className="hidden md:flex items-center gap-2 bg-black text-white px-5 py-2 rounded-md font-medium hover:bg-gray-800 transition"
+        className="hidden lg:flex items-center gap-2 bg-neutral-950 text-white px-8 py-3 rounded-xl hover:opacity-80 transition"
       >
         <Image
           src="/assets/envelope.svg"
           alt="envelope icon"
-          width={28}
-          height={28}
+          width={24}
+          height={24}
           className="invert"
         />
-        Contact us
+        <p className="text-md font-medium">Contact us</p>
       </a>
+
       {/* Mobile Hamburger */}
       <button
-        className="md:hidden flex items-center justify-center p-2 ml-2 rounded hover:bg-gray-100"
+        className="lg:hidden flex items-center justify-center p-3 rounded-xl cursor-pointer bg-gray-950 hover:opacity-80 transition duration-500"
         aria-label="Open menu"
         onClick={() => setDrawerOpen(true)}
       >
         <svg
-          width="32"
-          height="32"
+          width="24"
+          height="24"
           fill="none"
-          stroke="black"
+          stroke="white"
           strokeWidth="2"
           viewBox="0 0 24 24"
         >
