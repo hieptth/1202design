@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { NavbarItemProps } from './types';
 
@@ -17,7 +18,7 @@ function NavbarItem(props: NavbarItemProps) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <a
+      <Link
         className={`hover:text-black transition px-1 pb-1 border-b-2 ${
           active === label ? 'border-black' : 'border-transparent'
         } flex items-center`}
@@ -36,7 +37,7 @@ function NavbarItem(props: NavbarItemProps) {
             }`}
           />
         )}
-      </a>
+      </Link>
       {/* Popup for subItems */}
       {subItems && hovered && (
         <ul className='absolute left-1/2 -translate-x-1/2 bottom-0 translate-y-full flex flex-col min-w-[180px] bg-white shadow-lg rounded-xl py-2 z-50 border border-gray-100 animate__animated animate__fadeInUp animate__faster'>
