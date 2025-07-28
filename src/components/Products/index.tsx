@@ -5,13 +5,10 @@ import { AutoPlay } from "@egjs/flicking-plugins";
 import "@egjs/flicking-plugins/dist/flicking-plugins.css";
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CARD_ITEMS } from "./constants";
 
 const Products = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
   const plugins = [
     new AutoPlay({ duration: 3000, direction: "NEXT", stopOnHover: true }),
   ];
@@ -43,8 +40,13 @@ const Products = () => {
       <div className="flex flex-col gap-4 text-center px-4 lg:max-w-2/3">
         <p
           ref={titleRef}
-          className={`text-3xl/7.5 font-medium lg:text-5xl/15 uppercase text-[#0C0C0C] tracking-tight animate__animated ${titleVisible ? 'animate__backInRight' : 'opacity-0'}`}
-          style={{ animationDuration: '0.8s', animationTimingFunction: 'cubic-bezier(.4,0,.2,1)' }}
+          className={`text-3xl/7.5 font-medium lg:text-5xl/15 uppercase text-[#0C0C0C] tracking-tight animate__animated ${
+            titleVisible ? "animate__backInRight" : "opacity-0"
+          }`}
+          style={{
+            animationDuration: "0.8s",
+            animationTimingFunction: "cubic-bezier(.4,0,.2,1)",
+          }}
         >
           Popular Products
         </p>
@@ -66,25 +68,15 @@ const Products = () => {
         hideBeforeInit={true}
         className="w-full"
         style={{ overflow: "unset", height: "395px !important" }}
-        onWillChange={(e) => setActiveIndex(e.index)}
       >
         {CARD_ITEMS.map((item, index) => (
-          <div
-            key={index}
-            className="flex items-end box-border"
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-          >
+          <div key={index} className="flex items-end box-border">
             <HoverCard
               props={{
                 index,
                 img: item.img,
                 title: item.title,
                 description: item.description,
-                isActive:
-                  hoveredIndex === null
-                    ? index === activeIndex
-                    : index === hoveredIndex,
               }}
             />
           </div>
