@@ -61,7 +61,7 @@ function Contact() {
     >
       {/* Left: Info and Illustration */}
       <div
-        className={`flex-1 bg-[var(--color-neutral-50)] rounded-2xl p-6 sm:p-10 flex flex-col justify-between min-h-[470px] lg:min-h-[600px] shadow-md relative overflow-hidden animate__animated ${
+        className={`flex-1 bg-[var(--color-neutral-50)] rounded-2xl p-6 sm:p-10 flex flex-col justify-between min-h-[470px] lg:min-h-[600px] relative overflow-hidden animate__animated ${
           visible ? "animate__fadeInLeft" : "opacity-0"
         }`}
       >
@@ -98,7 +98,7 @@ function Contact() {
       {/* Right: Form */}
       <form
         onSubmit={handleSubmit}
-        className={`flex-1 bg-[#f7f7f7] rounded-2xl p-6 sm:p-10 flex flex-col gap-4 shadow-md animate__animated ${
+        className={`flex-1 bg-[#f7f7f7] rounded-2xl p-6 sm:p-10 flex flex-col gap-4 animate__animated ${
           visible ? "animate__fadeInRight" : "opacity-0"
         }`}
         style={{
