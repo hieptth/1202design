@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { NavbarItemProps } from "./types";
 import { clsx } from "clsx";
 
@@ -11,7 +12,7 @@ function NavbarItem(props: NavbarItemProps) {
 
   return (
     <li key={label} className="relative group">
-      <a
+      <Link
         className={clsx("transition p-3 flex items-center gap-2", {
           "border-gray-400 pb-[5px] border-b-5": active === label,
           "border-transparent": active !== label,
@@ -40,7 +41,7 @@ function NavbarItem(props: NavbarItemProps) {
             className="inline-block align-middle transition-transform duration-200 group-hover:rotate-180"
           />
         )}
-      </a>
+      </Link>
 
       {/* Popup for subItems */}
       {subItems && (

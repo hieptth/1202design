@@ -11,7 +11,7 @@ function Footer() {
   const [openSub, setOpenSub] = useState<string | null>(null);
 
   return (
-    <footer className='w-full border-t border-gray-200 bg-white px-4 sm:px-8 py-8'>
+    <footer className='w-full border-t border-gray-200 bg-white px-4 sm:px-8 py-8 relative bottom-0'>
       <div className='max-w-7xl mx-auto flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-4'>
         {/* Left: Logo and description */}
         <div className='flex flex-col gap-4 md:w-1/3'>
