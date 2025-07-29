@@ -7,17 +7,15 @@ type HoverCardProps = {
   description?: string;
   className?: string;
   style?: React.CSSProperties;
-  isActive?: boolean;
 };
 
 export const HoverCard = ({ props }: { props: HoverCardProps }) => {
-  const { img, title, description, className, style, isActive } = props;
+  const { img, title, description, className, style } = props;
 
   return (
     <div
       className={clsx(
-        "flex mx-1 lg:mx-5 rounded-4xl w-[213px] bg-neutral-50 group cursor-pointer relative transition-all duration-500 ease-out transform-gpu",
-        isActive && "w-[329px] h-[331px] bg-white",
+        "flex mx-1 lg:mx-5 rounded-4xl w-[213px] bg-neutral-50 group cursor-pointer relative transition-all duration-500 ease-out transform-gpu hover:w-[329px] hover:h-[331px] hover:bg-white",
         className
       )}
       style={style}
@@ -25,8 +23,7 @@ export const HoverCard = ({ props }: { props: HoverCardProps }) => {
       {/* Normal state: compact card with background image */}
       <div
         className={clsx(
-          "size-[213px] rounded-4xl bg-cover bg-center transition-all duration-500 ease-out",
-          isActive && "opacity-0 scale-90"
+          "size-[213px] rounded-4xl bg-cover bg-center transition-all duration-500 ease-out group-hover:opacity-0 group-hover:scale-90"
         )}
         style={{ backgroundImage: `url(${img})` }}
       />
@@ -34,8 +31,7 @@ export const HoverCard = ({ props }: { props: HoverCardProps }) => {
       {/* Hover state: expanded card with content */}
       <div
         className={clsx(
-          "absolute top-0 left-1/2 -translate-x-1/2 transition-all duration-500 ease-out z-10 opacity-0 pointer-events-none",
-          isActive && "lg:-translate-y-12 opacity-100 pointer-events-auto"
+          "absolute top-0 left-1/2 -translate-x-1/2 transition-all duration-500 ease-out z-10 opacity-0 pointer-events-none group-hover:lg:-translate-y-12 group-hover:opacity-100 group-hover:pointer-events-auto"
         )}
       >
         {/* White background card */}

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { Toaster } from "sonner";
+
+import { Footer, Navbar } from "@/components";
 import "@/styles/globals.css";
 
 const inter = Inter({
@@ -32,8 +34,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${sfPro.variable} antialiased font-sans`}
       >
+        <Navbar />
         {children}
         <Toaster />
+        <Footer />
       </body>
     </html>
   );
